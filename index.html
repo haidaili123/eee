@@ -3,267 +3,611 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>第五章数据可视化 - 交互式网站</title>
+    <title>浅蓝+原木色+薄荷绿主题 - 数据可视化交互网站</title>
+    <link rel="stylesheet" href="style-blue-green.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link rel="stylesheet" href="style.css">
-    <style>
-        .hero-section {
-            text-align: center;
-            padding: 3rem 0;
-            background: linear-gradient(135deg, var(--primary-warm) 0%, var(--secondary-warm) 100%);
-            color: white;
-            border-radius: 15px;
-            margin-bottom: 2rem;
-        }
-        
-        .hero-section h1 {
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-        
-        .hero-section p {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        
-        .demo-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            margin-top: 2rem;
-            flex-wrap: wrap;
-        }
-        
-        .demo-btn {
-            background: white;
-            color: var(--primary-warm);
-            border: none;
-            padding: 1rem 2rem;
-            border-radius: 25px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            text-decoration: none;
-            display: inline-block;
-        }
-        
-        .demo-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-        
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin: 3rem 0;
-        }
-        
-        .feature-card {
-            background: var(--card-bg);
-            border-radius: 15px;
-            padding: 2rem;
-            box-shadow: 0 8px 25px var(--shadow-warm);
-            border: 1px solid var(--border-warm);
-            text-align: center;
-            transition: transform 0.3s ease;
-        }
-        
-        .feature-card:hover {
-            transform: translateY(-5px);
-        }
-        
-        .feature-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-        
-        .feature-title {
-            color: var(--primary-warm);
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-            font-weight: 600;
-        }
-        
-        .preview-chart {
-            background: var(--pale-warm);
-            border-radius: 10px;
-            padding: 1.5rem;
-            margin: 2rem 0;
-            box-shadow: 0 4px 15px var(--shadow-warm);
-        }
-    </style>
 </head>
 <body>
-    <header>
-        <h1>第五章：Matplotlib子图绘制技术</h1>
-        <p>交互式数据可视化网站 - 低饱和暖米黄色主题</p>
-    </header>
-
-    <nav>
-        <ul>
-            <li><a href="#demos">演示版本</a></li>
-            <li><a href="#features">功能特色</a></li>
-            <li><a href="#preview">预览图表</a></li>
-            <li><a href="#data">数据说明</a></li>
-        </ul>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-title">🎨 数据可视化交互网站</div>
+            <ul class="nav-links">
+                <li><a href="#home">首页</a></li>
+                <li><a href="#chapter5">第五章</a></li>
+                <li><a href="#chapter6">第六章</a></li>
+                <li><a href="#interactive">交互功能</a></li>
+                <li><a href="#about">关于</a></li>
+            </ul>
+        </div>
     </nav>
 
-    <main>
-        <!-- Hero Section -->
-        <section class="hero-section">
-            <h1>🎨 第五章数据可视化</h1>
-            <p>基于Matplotlib子图绘制技术的现代化Web数据可视化展示平台，采用低饱和暖米黄色主题设计，提供丰富的交互功能。</p>
-            <div class="demo-buttons">
-                <a href="interactive.html" class="demo-btn">🚀 交互式版本</a>
-                <a href="complete.html" class="demo-btn">📊 完整版本</a>
-                <a href="test.html" class="demo-btn">🧪 测试版本</a>
-            </div>
-        </section>
-
-        <!-- Features Section -->
-        <section id="features">
-            <h2>✨ 功能特色</h2>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">🎨</div>
-                    <div class="feature-title">低饱和暖米黄色主题</div>
-                    <p>精心设计的暖色系配色方案，营造温馨舒适的视觉体验</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📱</div>
-                    <div class="feature-title">响应式设计</div>
-                    <p>完美适配桌面、平板和手机等各种设备屏幕</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">🔄</div>
-                    <div class="feature-title">交互式图表</div>
-                    <p>支持数据筛选、图表切换、动画控制等丰富交互</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📊</div>
-                    <div class="feature-title">多种图表类型</div>
-                    <p>折线图、柱状图、饼图、雷达图等多种可视化</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">📤</div>
-                    <div class="feature-title">数据导出功能</div>
-                    <p>支持JSON格式数据导出，便于数据分析</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">⚡</div>
-                    <div class="feature-title">实时更新</div>
-                    <p>数据变化即时反映，流畅的动画过渡效果</p>
+    <div class="container">
+        <!-- 首页横幅 -->
+        <section id="home">
+            <div class="card" style="text-align: center; padding: 3rem;">
+                <h1 style="font-size: 3rem; margin-bottom: 1rem;">
+                    🌊 <span style="background: linear-gradient(45deg, var(--dark-blue), var(--dark-mint)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">浅蓝</span> + <span style="background: linear-gradient(45deg, var(--dark-wood), var(--medium-wood)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">原木色</span> + <span style="background: linear-gradient(45deg, var(--dark-mint), var(--accent)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">薄荷绿</span> 🌿
+                </h1>
+                <p style="font-size: 1.3rem; color: var(--text-secondary); margin-bottom: 2rem;">
+                    基于 Matplotlib 第五、六章的交互式数据可视化网站
+                </p>
+                <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+                    <a href="#chapter5" class="btn btn-primary">📊 第五章 - 子图绘制</a>
+                    <a href="#chapter6" class="btn btn-secondary">📐 第六章 - 坐标轴定制</a>
+                    <a href="#interactive" class="btn btn-wood">🎮 交互体验</a>
                 </div>
             </div>
         </section>
 
-        <!-- Demo Versions -->
-        <section id="demos">
-            <h2>🎭 演示版本</h2>
-            <div class="example-card">
-                <h3>选择合适的版本</h3>
-                <div style="display: grid; gap: 1rem; margin-top: 1rem;">
-                    <div style="padding: 1rem; background: var(--pale-warm); border-radius: 10px;">
-                        <h4 style="color: var(--primary-warm); margin-bottom: 0.5rem;">🚀 <strong>交互式版本</strong></h4>
-                        <p>功能最完整的版本，包含数据筛选、图表切换、动画控制等所有交互功能。</p>
-                        <a href="interactive.html" style="display: inline-block; margin-top: 0.5rem; padding: 0.5rem 1rem; background: var(--primary-warm); color: white; border-radius: 5px; text-decoration: none;">查看演示 →</a>
+        <!-- 统计概览 -->
+        <div class="stats-container">
+            <div class="stat-card">
+                <div class="stat-number">2</div>
+                <div class="stat-label">章节内容</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">12+</div>
+                <div class="stat-label">可视化实例</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">50+</div>
+                <div class="stat-label">交互选项</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">3</div>
+                <div class="stat-label">主题配色</div>
+            </div>
+        </div>
+
+        <!-- 第五章部分 -->
+        <section id="chapter5">
+            <div class="card">
+                <h2>📊 第五章：子图绘制与布局</h2>
+                <p>基于Matplotlib第五章的子图绘制实例，包括固定区域、自定义区域、共享坐标轴和布局管理。</p>
+                
+                <div class="tabs">
+                    <button class="tab active" onclick="showTab('ch5-sales')">销售分析</button>
+                    <button class="tab" onclick="showTab('ch5-demographics')">人口统计</button>
+                    <button class="tab" onclick="showTab('ch5-weather')">气象数据</button>
+                    <button class="tab" onclick="showTab('ch5-automotive')">汽车销量</button>
+                </div>
+
+                <!-- 销售分析 -->
+                <div id="ch5-sales" class="tab-content active">
+                    <div class="controls">
+                        <h3>⚙️ 数据筛选</h3>
+                        <div class="control-group">
+                            <label>数据类型：</label>
+                            <select id="salesDataType" onchange="updateSalesData()">
+                                <option value="both">产品A + 产品B</option>
+                                <option value="productA">仅产品A</option>
+                                <option value="productB">仅产品B</option>
+                            </select>
+                        </div>
+                        <div class="control-group">
+                            <label>图表类型：</label>
+                            <select id="salesChartType" onchange="updateSalesData()">
+                                <option value="line">折线图</option>
+                                <option value="bar">柱状图</option>
+                                <option value="radar">雷达图</option>
+                            </select>
+                        </div>
+                        <div class="control-group">
+                            <label>时间范围：</label>
+                            <select id="salesTimeRange" onchange="updateSalesData()">
+                                <option value="all">全年</option>
+                                <option value="q1">第一季度</option>
+                                <option value="q2">第二季度</option>
+                                <option value="q3">第三季度</option>
+                                <option value="q4">第四季度</option>
+                            </select>
+                        </div>
                     </div>
-                    <div style="padding: 1rem; background: var(--pale-warm); border-radius: 10px;">
-                        <h4 style="color: var(--primary-warm); margin-bottom: 0.5rem;">📊 <strong>完整版本</strong></h4>
-                        <p>包含第五章所有实例的静态展示，适合查看完整数据可视化效果。</p>
-                        <a href="complete.html" style="display: inline-block; margin-top: 0.5rem; padding: 0.5rem 1rem; background: var(--primary-warm); color: white; border-radius: 5px; text-decoration: none;">查看演示 →</a>
+                    <div class="chart-container">
+                        <canvas id="salesChart"></canvas>
                     </div>
-                    <div style="padding: 1rem; background: var(--pale-warm); border-radius: 10px;">
-                        <h4 style="color: var(--primary-warm); margin-bottom: 0.5rem;">🧪 <strong>测试版本</strong></h4>
-                        <p>简化版本，用于测试基本图表功能和主题效果。</p>
-                        <a href="test.html" style="display: inline-block; margin-top: 0.5rem; padding: 0.5rem 1rem; background: var(--primary-warm); color: white; border-radius: 5px; text-decoration: none;">查看演示 →</a>
+                </div>
+
+                <!-- 人口统计 -->
+                <div id="ch5-demographics" class="tab-content">
+                    <div class="controls">
+                        <h3>⚙️ 地区筛选</h3>
+                        <div class="control-group">
+                            <label>选择国家：</label>
+                            <select id="countryFilter" multiple onchange="updateDemographicsData()" style="height: 120px;">
+                                <option value="china" selected>中国</option>
+                                <option value="canada">加拿大</option>
+                                <option value="brazil">巴西</option>
+                                <option value="australia">澳大利亚</option>
+                                <option value="japan">日本</option>
+                                <option value="mexico">墨西哥</option>
+                                <option value="russia">俄罗斯</option>
+                                <option value="korea">韩国</option>
+                                <option value="switzerland">瑞士</option>
+                                <option value="turkey">土耳其</option>
+                                <option value="uk">英国</option>
+                                <option value="usa">美国</option>
+                            </select>
+                        </div>
+                        <div class="control-group">
+                            <label>宠物类型：</label>
+                            <select id="petType" onchange="updateDemographicsData()">
+                                <option value="both">养猫 + 养狗</option>
+                                <option value="cats">仅养猫</option>
+                                <option value="dogs">仅养狗</option>
+                            </select>
+                        </div>
+                        <div class="control-group">
+                            <label>排序方式：</label>
+                            <select id="sortOrder" onchange="updateDemographicsData()">
+                                <option value="name">按名称</option>
+                                <option value="cats">按养猫比例</option>
+                                <option value="dogs">按养狗比例</option>
+                                <option value="total">按总和</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="axis-demo">
+                        <div class="chart-container">
+                            <canvas id="catChart"></canvas>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="dogChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 气象数据 -->
+                <div id="ch5-weather" class="tab-content">
+                    <div class="controls">
+                        <h3>⚙️ 气象数据筛选</h3>
+                        <div class="control-group">
+                            <label>季度选择：</label>
+                            <select id="seasonFilter" onchange="updateWeatherData()">
+                                <option value="all">全年</option>
+                                <option value="spring">春季 (3-5月)</option>
+                                <option value="summer">夏季 (6-8月)</option>
+                                <option value="autumn">秋季 (9-11月)</option>
+                                <option value="winter">冬季 (12-2月)</option>
+                            </select>
+                        </div>
+                        <div class="control-group">
+                            <label>数据类型：</label>
+                            <label><input type="checkbox" id="showTemp" checked onchange="updateWeatherData()"> 气温</label>
+                            <label><input type="checkbox" id="showPrecipitation" checked onchange="updateWeatherData()"> 降水量</label>
+                            <label><input type="checkbox" id="showEvaporation" checked onchange="updateWeatherData()"> 蒸发量</label>
+                        </div>
+                        <div class="control-group">
+                            <label>温度单位：</label>
+                            <select id="tempUnit" onchange="updateWeatherData()">
+                                <option value="celsius">摄氏度 (°C)</option>
+                                <option value="fahrenheit">华氏度 (°F)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="weatherChart"></canvas>
+                    </div>
+                </div>
+
+                <!-- 汽车销量 -->
+                <div id="ch5-automotive" class="tab-content">
+                    <div class="controls">
+                        <h3>⚙️ 汽车数据筛选</h3>
+                        <div class="control-group">
+                            <label>月份范围：</label>
+                            <select id="monthRange" onchange="updateAutomotiveData()">
+                                <option value="all">上半年 (1-6月)</option>
+                                <option value="q1">第一季度 (1-3月)</option>
+                                <option value="q2">第二季度 (4-6月)</option>
+                                <option value="custom">自定义</option>
+                            </select>
+                        </div>
+                        <div class="control-group">
+                            <label>城市选择：</label>
+                            <select id="cityFilter" multiple onchange="updateAutomotiveData()" style="height: 120px;">
+                                <option value="beijing" selected>北京</option>
+                                <option value="shanghai" selected>上海</option>
+                                <option value="guangzhou" selected>广州</option>
+                                <option value="shenzhen" selected>深圳</option>
+                                <option value="zhejiang">浙江</option>
+                                <option value="shandong">山东</option>
+                            </select>
+                        </div>
+                        <div class="control-group">
+                            <label>显示方式：</label>
+                            <select id="automotiveDisplay" onchange="updateAutomotiveData()">
+                                <option value="monthly">月度销售额</option>
+                                <option value="city">城市销量对比</option>
+                                <option value="area">面积图</option>
+                                <option value="comparison">综合对比</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="axis-demo">
+                        <div class="chart-container">
+                            <canvas id="carSalesChart"></canvas>
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="carCityChart"></canvas>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Preview Chart -->
-        <section id="preview">
-            <h2>📈 预览图表</h2>
-            <div class="preview-chart">
-                <canvas id="previewChart"></canvas>
+        <!-- 第六章部分 -->
+        <section id="chapter6">
+            <div class="card">
+                <h2>📐 第六章：坐标轴定制与优化</h2>
+                <p>基于Matplotlib第六章的坐标轴定制实例，包括刻度定制、轴脊控制、位置调整和样式优化。</p>
+                
+                <div style="text-align: center; margin: 2rem 0;">
+                    <a href="chapter6-interactive.html" class="btn btn-primary" style="font-size: 1.1rem; padding: 1rem 2rem;">
+                        🎮 体验完整的坐标轴交互功能
+                    </a>
+                </div>
+
+                <!-- 快速预览 -->
+                <div class="axis-demo">
+                    <div class="chart-container">
+                        <canvas id="windSpeedPreview"></canvas>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="trigPreview"></canvas>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <!-- Data Description -->
-        <section id="data">
-            <h2>📚 数据说明</h2>
-            <div class="example-card">
-                <h3>基于第五章实例数据</h3>
-                <p>本项目所有数据均来源于第五章Matplotlib子图绘制实例，包括：</p>
-                <ul style="list-style: none; padding: 0; margin-top: 1rem;">
-                    <li style="margin-bottom: 0.5rem;">🏭 <strong>实例1：</strong>某工厂产品A与产品B销售额分析</li>
-                    <li style="margin-bottom: 0.5rem;">🐱 <strong>实例2：</strong>部分国家养猫与养狗人群比例分析</li>
-                    <li style="margin-bottom: 0.5rem;">📱 <strong>实例3：</strong>2017年与2018年抖音用户分析</li>
-                    <li style="margin-bottom: 0.5rem;">🌤️ <strong>实例4：</strong>某地区全年气温与降水量、蒸发量关系</li>
-                    <li style="margin-bottom: 0.5rem;">🚗 <strong>实例5：</strong>2018年上半年某品牌汽车销售情况</li>
-                </ul>
+        <!-- 交互功能展示 -->
+        <section id="interactive">
+            <div class="card">
+                <h2>🎮 交互功能展示</h2>
+                <p>本网站提供的丰富交互功能，让数据可视化更加生动和实用。</p>
+                
+                <div class="stats-container">
+                    <div class="stat-card">
+                        <div class="stat-number">📊</div>
+                        <div class="stat-label">动态图表切换</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">🔍</div>
+                        <div class="stat-label">实时数据筛选</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">📥</div>
+                        <div class="stat-label">图表导出功能</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">🎨</div>
+                        <div class="stat-label">主题定制</div>
+                    </div>
+                </div>
+
+                <div class="controls">
+                    <h3>🛠️ 全局控制</h3>
+                    <div class="control-group">
+                        <label>全局主题：</label>
+                        <select id="globalTheme" onchange="updateGlobalTheme()">
+                            <option value="blue-green">浅蓝+原木色+薄荷绿</option>
+                            <option value="warm-yellow">低饱和暖米黄色</option>
+                            <option value="ocean">海洋蓝</option>
+                            <option value="forest">森林绿</option>
+                        </select>
+                    </div>
+                    <div class="control-group">
+                        <label>动画速度：</label>
+                        <select id="animationSpeed" onchange="updateAnimationSpeed()">
+                            <option value="0">无动画</option>
+                            <option value="500">快速</option>
+                            <option value="1000" selected>正常</option>
+                            <option value="2000">缓慢</option>
+                        </select>
+                    </div>
+                    <div class="control-group">
+                        <button class="btn btn-primary" onclick="exportAllCharts()">📥 导出所有图表</button>
+                        <button class="btn btn-secondary" onclick="randomizeAllData()">🎲 随机化数据</button>
+                        <button class="btn btn-wood" onclick="resetAllSettings()">🔄 重置设置</button>
+                    </div>
+                </div>
             </div>
         </section>
-    </main>
+
+        <!-- 关于部分 -->
+        <section id="about">
+            <div class="card">
+                <h2>📖 关于项目</h2>
+                <p>这是一个基于Matplotlib教程第五、六章内容开发的交互式数据可视化网站。</p>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin: 2rem 0;">
+                    <div>
+                        <h3>🎨 设计理念</h3>
+                        <p>采用浅蓝+原木色+薄荷绿的清新配色方案，营造自然、舒适的视觉体验。低饱和度的色彩搭配确保长时间使用不会造成视觉疲劳。</p>
+                    </div>
+                    <div>
+                        <h3>🛠️ 技术栈</h3>
+                        <p>• HTML5 + CSS3 响应式设计<br>
+                           • Chart.js 图表库<br>
+                           • 原生JavaScript交互逻辑<br>
+                           • 基于Matplotlib实例的数据重构</p>
+                    </div>
+                    <div>
+                        <h3>📚 数据来源</h3>
+                        <p>所有可视化实例均基于《Matplotlib数据可视化》教程第五、六章的示例数据进行重新实现和增强。</p>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 2rem;">
+                    <p style="color: var(--text-secondary);">
+                        Made with ❤️ using 浅蓝+原木色+薄荷绿 theme<br>
+                        © 2024 数据可视化交互网站
+                    </p>
+                </div>
+            </div>
+        </section>
+    </div>
 
     <footer>
-        <p>基于第五章Matplotlib子图绘制技术的Web可视化展示 | 部署于GitHub Pages</p>
+        <p>🌊 浅蓝+原木色+薄荷绿主题 | 基于Matplotlib第五、六章的交互式数据可视化网站</p>
     </footer>
 
+    <script src="charts.js"></script>
+    <script src="chapter6-charts.js"></script>
     <script>
-        // 创建预览图表
-        window.addEventListener('load', function() {
-            const ctx = document.getElementById('previewChart').getContext('2d');
+        // 全局变量存储所有图表实例
+        let globalCharts = {};
+
+        // 初始化所有图表
+        function initializeAllCharts() {
+            console.log('🚀 初始化所有交互图表...');
             
-            new Chart(ctx, {
-                type: 'line',
-                data: {
-                    labels: ['1月', '2月', '3月', '4月', '5月', '6月'],
-                    datasets: [{
-                        label: '产品A',
-                        data: [20, 28, 23, 16, 29, 36],
-                        borderColor: '#D4A574',
-                        backgroundColor: 'rgba(212, 165, 116, 0.1)',
-                        tension: 0.3
-                    }, {
-                        label: '产品B',
-                        data: [17, 22, 39, 26, 35, 23],
-                        borderColor: '#C19A6B',
-                        backgroundColor: 'rgba(193, 154, 107, 0.1)',
-                        tension: 0.3
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    plugins: {
-                        title: {
-                            display: true,
-                            text: '产品销售趋势预览'
-                        },
-                        legend: {
-                            position: 'bottom'
-                        }
+            // 初始化第五章图表
+            if (typeof createProductSalesChart === 'function') {
+                createProductSalesChart();
+                globalCharts.sales = window.productSalesChart;
+            }
+            
+            if (typeof createCatOwnershipChart === 'function') {
+                createCatOwnershipChart();
+                globalCharts.cats = window.catChart;
+            }
+            
+            if (typeof createDogOwnershipChart === 'function') {
+                createDogOwnershipChart();
+                globalCharts.dogs = window.dogChart;
+            }
+            
+            if (typeof createWeatherChart === 'function') {
+                createWeatherChart();
+                globalCharts.weather = window.weatherChart;
+            }
+            
+            if (typeof createCarMonthlySalesChart === 'function') {
+                createCarMonthlySalesChart();
+                globalCharts.carSales = window.carSalesChart;
+            }
+            
+            // 初始化第六章预览图表
+            createChapter6Previews();
+            
+            console.log('✅ 所有图表初始化完成');
+        }
+
+        // 创建第六章预览图表
+        function createChapter6Previews() {
+            // 风速预览
+            const windCtx = document.getElementById('windSpeedPreview');
+            if (windCtx) {
+                globalCharts.windPreview = new Chart(windCtx.getContext('2d'), {
+                    type: 'line',
+                    data: {
+                        labels: ['00:00', '04:00', '08:00', '12:00', '16:00', '20:00', '24:00'],
+                        datasets: [{
+                            label: '风速预览',
+                            data: [7, 11, 8, 22, 10, 11, 8],
+                            borderColor: '#1976D2',
+                            backgroundColor: '#E3F2FD40',
+                            tension: 0.4,
+                            fill: true
+                        }]
                     },
-                    scales: {
-                        y: {
-                            beginAtZero: true,
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
                             title: {
                                 display: true,
-                                text: '销售额(亿元)'
+                                text: '深圳市风速预览'
                             }
                         }
                     }
+                });
+            }
+
+            // 三角函数预览
+            const trigCtx = document.getElementById('trigPreview');
+            if (trigCtx) {
+                const x = [];
+                const sin = [];
+                for (let i = 0; i < 50; i++) {
+                    const val = -2*Math.PI + 4*Math.PI*i/49;
+                    x.push(val);
+                    sin.push(Math.sin(val));
+                }
+                
+                globalCharts.trigPreview = new Chart(trigCtx.getContext('2d'), {
+                    type: 'line',
+                    data: {
+                        labels: x,
+                        datasets: [{
+                            label: 'sin(x)',
+                            data: sin,
+                            borderColor: '#00897B',
+                            tension: 0.4,
+                            pointRadius: 0
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            title: {
+                                display: true,
+                                text: '正弦函数预览'
+                            }
+                        }
+                    }
+                });
+            }
+        }
+
+        // 标签页切换功能
+        function showTab(tabName) {
+            const tabs = document.querySelectorAll('.tab-content');
+            tabs.forEach(tab => tab.classList.remove('active'));
+            
+            const selectedTab = document.getElementById(tabName);
+            if (selectedTab) {
+                selectedTab.classList.add('active');
+            }
+            
+            const tabButtons = document.querySelectorAll('.tab');
+            tabButtons.forEach(button => button.classList.remove('active'));
+            
+            if (event && event.target) {
+                event.target.classList.add('active');
+            }
+        }
+
+        // 更新销售数据
+        function updateSalesData() {
+            const dataType = document.getElementById('salesDataType').value;
+            const chartType = document.getElementById('salesChartType').value;
+            const timeRange = document.getElementById('salesTimeRange').value;
+            
+            console.log('更新销售数据:', { dataType, chartType, timeRange });
+            
+            // 这里可以实现具体的数据更新逻辑
+            if (globalCharts.sales) {
+                // 根据筛选条件更新图表
+                globalCharts.sales.update();
+            }
+        }
+
+        // 更新人口统计数据
+        function updateDemographicsData() {
+            const countryFilter = Array.from(document.getElementById('countryFilter').selectedOptions)
+                .map(option => option.value);
+            const petType = document.getElementById('petType').value;
+            const sortOrder = document.getElementById('sortOrder').value;
+            
+            console.log('更新人口统计数据:', { countryFilter, petType, sortOrder });
+            
+            if (globalCharts.cats) globalCharts.cats.update();
+            if (globalCharts.dogs) globalCharts.dogs.update();
+        }
+
+        // 更新气象数据
+        function updateWeatherData() {
+            const season = document.getElementById('seasonFilter').value;
+            const showTemp = document.getElementById('showTemp').checked;
+            const showPrecipitation = document.getElementById('showPrecipitation').checked;
+            const showEvaporation = document.getElementById('showEvaporation').checked;
+            const tempUnit = document.getElementById('tempUnit').value;
+            
+            console.log('更新气象数据:', { season, showTemp, showPrecipitation, showEvaporation, tempUnit });
+            
+            if (globalCharts.weather) globalCharts.weather.update();
+        }
+
+        // 更新汽车数据
+        function updateAutomotiveData() {
+            const monthRange = document.getElementById('monthRange').value;
+            const cityFilter = Array.from(document.getElementById('cityFilter').selectedOptions)
+                .map(option => option.value);
+            const display = document.getElementById('automotiveDisplay').value;
+            
+            console.log('更新汽车数据:', { monthRange, cityFilter, display });
+            
+            if (globalCharts.carSales) globalCharts.carSales.update();
+            if (globalCharts.carCity) globalCharts.carCity.update();
+        }
+
+        // 更新全局主题
+        function updateGlobalTheme() {
+            const theme = document.getElementById('globalTheme').value;
+            console.log('切换全局主题:', theme);
+            
+            // 这里可以实现主题切换逻辑
+            document.body.className = theme;
+        }
+
+        // 更新动画速度
+        function updateAnimationSpeed() {
+            const speed = parseInt(document.getElementById('animationSpeed').value);
+            console.log('更新动画速度:', speed);
+            
+            // 更新所有图表的动画速度
+            Object.values(globalCharts).forEach(chart => {
+                if (chart && chart.options) {
+                    chart.options.animation.duration = speed;
+                    chart.update();
                 }
             });
-        });
+        }
+
+        // 导出所有图表
+        function exportAllCharts() {
+            Object.entries(globalCharts).forEach(([name, chart]) => {
+                if (chart) {
+                    const url = chart.toBase64Image();
+                    const link = document.createElement('a');
+                    link.download = `chart-${name}-${Date.now()}.png`;
+                    link.href = url;
+                    link.click();
+                }
+            });
+            console.log('📥 所有图表已导出');
+        }
+
+        // 随机化所有数据
+        function randomizeAllData() {
+            Object.values(globalCharts).forEach(chart => {
+                if (chart && chart.data && chart.data.datasets) {
+                    chart.data.datasets.forEach(dataset => {
+                        if (dataset.data) {
+                            dataset.data = dataset.data.map(() => Math.random() * 100);
+                        }
+                    });
+                    chart.update();
+                }
+            });
+            console.log('🎲 所有数据已随机化');
+        }
+
+        // 重置所有设置
+        function resetAllSettings() {
+            document.getElementById('globalTheme').value = 'blue-green';
+            document.getElementById('animationSpeed').value = '1000';
+            
+            // 重置第五章筛选器
+            document.getElementById('salesDataType').value = 'both';
+            document.getElementById('salesChartType').value = 'line';
+            document.getElementById('salesTimeRange').value = 'all';
+            
+            // 更新主题
+            updateGlobalTheme();
+            updateAnimationSpeed();
+            
+            // 重新初始化图表
+            initializeAllCharts();
+            
+            console.log('🔄 所有设置已重置');
+        }
 
         // 平滑滚动
-        document.querySelectorAll('nav a').forEach(anchor => {
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
@@ -274,6 +618,12 @@
                     });
                 }
             });
+        });
+
+        // 页面加载完成后初始化
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🎨 浅蓝+原木色+薄荷绿主题网站加载完成');
+            initializeAllCharts();
         });
     </script>
 </body>
