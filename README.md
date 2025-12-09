@@ -1,14 +1,15 @@
-# 第五章数据可视化网站
+# 🌸 第六章数据可视化网站 - 浅紫色渐变主题
 
-基于第五章Matplotlib子图绘制技术的交互式数据可视化网站，采用低饱和暖米黄色主题设计。
+基于Matplotlib第六章坐标轴定制技术的交互式数据可视化网站，采用优雅的浅紫色渐变主题设计。
 
 ## 📖 项目介绍
 
-本项目将第五章的Matplotlib可视化实例转换为现代的Web交互式数据可视化网站，包含丰富的交互功能和优雅的用户界面。
+本项目将第六章的Matplotlib可视化实例转换为现代的Web交互式数据可视化网站，包含丰富的交互功能和优雅的用户界面。
 
 ## 🎨 设计特色
 
-- **低饱和暖米黄色主题**：采用温馨舒适的暖色系配色
+- **浅紫色渐变主题**：采用优雅梦幻的紫色渐变配色(#F3E5F5到#6A1B9A)
+- **坐标轴定制功能**：基于第六章完整实现的坐标轴控制
 - **响应式设计**：完美适配桌面和移动设备
 - **交互式图表**：支持数据筛选、动态更新、导出功能
 - **现代化界面**：基于HTML5、CSS3和Chart.js技术
@@ -40,19 +41,23 @@
 
 ## 🚀 在线预览
 
-👉 **[在线演示地址](https://haidaili123.github.io/QQQ/)**
+👉 **[GitHub仓库地址](https://github.com/haidaili123/iii)**
+
+📱 **GitHub Pages访问**: https://haidaili123.github.io/iii/ (需启用GitHub Pages)
 
 ## 📁 文件结构
 
 ```
-QQQ/
-├── index.html              # 静态版本主页
-├── interactive.html         # 交互式版本主页
-├── complete.html          # 完整版本主页
-├── style.css             # 低饱和暖米黄色主题样式
-├── charts.js            # Chart.js图表实现
-├── README.md            # 项目说明文档
-└── 第5章.ipynb         # 原始数据源
+iii/
+├── index-purple.html       # 浅紫色主题主页
+├── chapter6-purple.html    # 第六章完整版
+├── interactive.html        # 交互式版本
+├── style-purple.css       # 浅紫色渐变主题样式
+├── purple-charts.js       # 紫色主题图表实现
+├── charts.js             # 通用图表库
+├── README.md             # 项目说明文档
+├── deploy-github.sh      # Linux/Mac部署脚本
+└── deploy-github.ps1     # Windows部署脚本
 ```
 
 ## 🔧 技术栈
@@ -103,17 +108,42 @@ QQQ/
 
 ## 🚀 本地运行
 
+### 🚀 部署到GitHub (推荐)
+
 1. 克隆仓库：
    ```bash
-   git clone https://github.com/haidaili123/QQQ.git
+   git clone https://github.com/haidaili123/iii.git
    ```
 
 2. 进入目录：
    ```bash
-   cd QQQ
+   cd iii
    ```
 
-3. 启动本地服务器（推荐）：
+3. 运行部署脚本：
+   ```bash
+   # Windows系统
+   .\deploy-github.ps1
+   
+   # Linux/Mac系统
+   chmod +x deploy-github.sh
+   ./deploy-github.sh
+   ```
+
+4. 在GitHub上启用Pages：
+   - 访问 https://github.com/haidaili123/iii
+   - 进入 Settings → Pages
+   - 选择 "Deploy from a branch"
+   - 选择 "main" 分支和 "/" 目录
+   - 点击 Save
+
+5. 等待几分钟后访问：https://haidaili123.github.io/iii/
+
+### 🏃‍♂️ 本地运行
+
+1. 克隆仓库（如上）
+
+2. 启动本地服务器：
    ```bash
    # 使用Python
    python -m http.server 8000
@@ -122,19 +152,20 @@ QQQ/
    npx serve .
    ```
 
-4. 打开浏览器访问：
+3. 打开浏览器访问：
    ```
-   http://localhost:8000
+   http://localhost:8000/index-purple.html
    ```
 
 ## 📝 更新日志
 
-### v1.0.0 (2024-12-09)
-- ✨ 完成低饱和暖米黄色主题设计
-- ✨ 实现交互式数据可视化功能
-- ✨ 添加响应式布局支持
-- ✨ 集成第五章所有实例数据
+### v1.0.0 (2025-12-09)
+- ✨ 完成浅紫色渐变主题设计
+- ✨ 实现基于第六章坐标轴定制的交互功能
+- ✨ 添加8个实时交互图表演示
+- ✨ 集成第六章所有实例数据
 - ✨ 支持数据导出和筛选功能
+- ✨ 实现GitHub Pages部署支持
 
 ## 🤝 贡献
 
